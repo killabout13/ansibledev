@@ -1,0 +1,63 @@
+- name: Azure Setup Essentials
+  hosts: localhost
+  connection: local
+  tasks:
+  - name: Create a resource group
+    azure_rm_resourcegroup:
+      name: "{{ rg_name }}"
+      location: "{{ azure_location }}"
+
+  - name: Create Virtual Network
+    azure_rm_virtualnetwork:
+      resource_group: "{{ rg_name }}"
+      name: "{{ vnet_name }}"
+      address_prefixes: "{{ vnet_addr_pref }}"
+
+  - name: Create a subnet
+    azure_rm_subnet:
+      resource_group: "{{ rg_name }}"
+      name: "{{ subnet_name }}"
+      address_prefix: "{{ subnet_addr_pref }}"
+      virtual_network: "{{ vnet_name }}"
+
+
+  - name: Network Security group
+    azure_rm_securitygroup:
+      resource_group: "{{ rg_name }}"
+      name: "{{ nsg_name }}"
+      rules:
+        - name: SSH
+          protocol: Tcp
+          source_address_prefix: "{{ nsg_source_addr_pref }}"
+          destination_port_range: 22
+          access: Allow
+          priority: 100
+          direction: Inbound
+        - name: HTTP
+          protocol: Tcp
+          source_address_prefix: "{{ nsg_source_addr_pref }}"
+          destination_port_range: 80
+          access: Allow
+          priority: 101
+          direction: Inbound
+        - name: HTTPS
+          protocol: Tcp
+          source_address_prefix: "{{ nsg_source_addr_pref }}"
+          destination_port_range: 443
+          access: Allow
+          priority: 102
+          direction: Inbound
+        - name: RDP
+          protocol: Tcp
+          source_address_prefix: "{{ nsg_source_addr_pref }}"
+          destination_port_range: 3389
+          access: Allow
+          priority: 103
+          direction: Inbound
+        - name: WinRM
+          protocol: Tcp
+          source_address_prefix: "{{ nsg_source_addr_pref }}"
+          destination_port_range: 5986
+          access: Allow
+          priority: 104
+          direction: Inbound

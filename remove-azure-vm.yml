@@ -1,0 +1,9 @@
+---
+- name: Delete a VM on Azure
+  hosts: localhost
+  tasks:
+    - name: Delete a VM
+      azure_rm_virtualmachine:
+        resource_group: "{{ rg_name }}"
+        name: "{{ vm_name }}"
+        state: absent

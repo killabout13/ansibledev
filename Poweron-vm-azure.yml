@@ -1,0 +1,9 @@
+---
+
+- name: Poweron a Azure VM
+  hosts: localhost
+  tasks:
+    - name: Poweron
+      azure_rm_virtualmachine:
+        resource_group: "{{ rg_name }}"
+        name: "{{ vm_name }}"

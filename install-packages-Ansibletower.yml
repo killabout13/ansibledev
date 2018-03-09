@@ -1,0 +1,23 @@
+---
+- name: Setup Ansible Tower
+  hosts: "{{ hostnames }}"
+  tasks:
+    - name: Get Ansible Tower
+      shell: cd /tmp && wget https://releases.ansible.com/ansible-tower/setup/ansible-tower-setup-3.2.3.tar.gz
+      become: true
+
+    - name: Extract the ansible tower package 
+      unarchive:
+        src: /tmp/ansible-tower-setup-3.2.3.tar.gz
+        dest: /tmp
+        remote_src: yes
+      become: true
+
+    - template:
+        src: inventory.j2
+        dest: /tmp/ansible-tower-setup-3.2.3/inventory
+      become: true
+
+    - name: Start setup.sh ansible tower
+      shell: /tmp/ansible-tower-setup-3.2.3/setup.sh
+      become: true

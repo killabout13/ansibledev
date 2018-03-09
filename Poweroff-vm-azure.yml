@@ -1,0 +1,14 @@
+---
+- name: Poweroff and Deallocate VM
+  hosts: localhost
+  tasks:
+    - name: Poweroff
+      azure_rm_virtualmachine:
+        resource_group: "{{ rg_name }}"
+        name: "{{ vm_name }}"
+        started: no
+    - name: Deallocate VM
+      azure_rm_virtualmachine:
+        resource_group: "{{ rg_name }}"
+        name: "{{ vm_name }}"
+        allocated: no
