@@ -31,7 +31,7 @@
         ssh_password_enabled: false
         ssh_public_keys: 
           - path: /home/guilbert/.ssh/authorized_keys
-            key_data: "ssh-rsa key"
+            key_data: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDRydbNW0LAWKXNF5FmAl44mvgv4+lwEKurwLNyKVOKH54L76O7E6Hwk51eVCh2dIcywvdtSg7OadmcTqNnBA9zbtHbj93GSvUWmuQYpIUJ3Z9nX/IMDrnnJvsgPi52Q2Rhu/4/v9Qc3OfckyNnhpfx4v6+XAIkUboqzt8RfqjMqlPTg+LwHoD5gPvZN5MI8GWeTZ8+g6+utmpRmjzcOytJb+VlHFAnxe4GrJwLf4acp5AVBZxUK2uxq5dqap5o8hK93Vw6LzSsAleodyY/5cHtuSg3nEosRnlsdQN9+rqtiZAnulC6l0EBygzsuDXOWO3G8nDpv9ItOVk5fcXYABY0AQLqmcLvPoDeT5JAos5Fkjn/touYK7fBDUHmr7geNKe42tGnC3yJWxg7c8oQ3GFxzO0VQS8Kd/8T1oJbjE7sVg0oPtT8KnniXJOSL1QjHXrZtPPYS/0g5ocWKSkPuVhcWUieWCEgn6WFTq8pqUtD/LkxQYNEmsp+DXSE6e4tVVKqnjAA9Ge1OZ2jtO8KwlEoSU8ZItoIUg+A5aH6q5bOdF0qX1CdcXs2DpjKAcfBBdyGXdvUL0F2TZbwhpISnH2WpE9p+Q1yChwdF4CQ01jEWQ/ZYqZFJkMRinLGA2tR8PHRIOXtJlN8Cq10aNFo1NZYJY76Z1oVFrw8PRr5DEQW/w=="
         network_interfaces: "{{ vnic_name }}"
         image:
           offer: UbuntuServer
