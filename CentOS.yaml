@@ -1,4 +1,5 @@
-name: Azure Ubuntu VM
+---
+- name: Azure CentOS VM
   hosts: localhost
   connection: local
   tasks:
